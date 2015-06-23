@@ -529,6 +529,11 @@ on property:init.svc.bootanim=stopped
 
     write /sys/block/mmcblk0/queue/scheduler zen
     write /sys/block/mmcblk0/bdi/read_ahead_kb 512
+
+    write /sys/module/lowmemorykiller/parameters/minfree 20400,15300,18400,21500,24500,46000
+
+    write /sys/devices/system/cpu/sched_mc_power_savings 2
+
     start mpdecision
 
 on property:init.svc.bootanim=running
