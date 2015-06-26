@@ -92,3 +92,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 # QC vendor extension
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.vendor.extension_library=/vendor/lib/libqti-perfd-client.so
+
+# MPDecision
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qualcomm.perf.cores_online=2
