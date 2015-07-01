@@ -30,6 +30,19 @@ def FullOTA_InstallEnd(info):
   
   info.script.AppendExtra('ifelse(is_mounted("/system"), unmount("/system"));')
   
+  info.script.Print(" ");
+  info.script.Print("Powered by Nice & Fruity KERNEL");
+  info.script.Print(" ");
+  info.script.Print("   __.--~~.,-.__     ");
+  info.script.Print("   `~-._.-(`-.__`-.  ");
+  info.script.Print("           \    `~~` ");
+  info.script.Print("      .--./ \        ");
+  info.script.Print("     /#   \  \.--.   ");
+  info.script.Print("     \    /  /#   \  ");
+  info.script.Print("      '--'   \    /  ");
+  info.script.Print("              '--'   ");
+  info.script.Print(" ");
+  
   info.script.Mount("/system")
   info.script.AppendExtra('assert(run_program("/system/bin/panel.sh") == 0);')
   info.script.AppendExtra('assert(run_program("/sbin/sh", "-c", "busybox dd if=/tmp/boot.img of=/dev/block/platform/msm_sdcc.1/by-name/boot") == 0);')
