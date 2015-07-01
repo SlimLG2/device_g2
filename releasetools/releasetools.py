@@ -13,29 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-#
-#
-# This leverages the loki_patch utility created by djrbliss
-# See here for more information on loki: https://github.com/djrbliss/loki
-#
 # Detect panel and swap as necessary 
-# lcd_maker_id is determined by get_panel_maker_id on the hardware and is always accurate
-# This searches directly in the boot.img and has no other requirements
-# Do not shorten the search or you may change the actual kernel source
+# lcd_maker_id is determined by get_panel_maker_id on the hardware and is always accurate.
+# This searches directly in the boot.img and has no other requirements.
+# Do not shorten the search or you may change the actual kernel source.
 #
+# Unmount /system in CM install
+# On CM install we need to manually unmount /system before flashing boot image.
 
-"""Custom OTA commands for LG devices"""
-
-import os
-import re
+""" Custom OTA commands for LG devices """
 
 def FullOTA_InstallEnd(info):
   info.script.script = [cmd for cmd in info.script.script if not "boot.img" in cmd]
   info.script.script = [cmd for cmd in info.script.script if not "show_progress(0.100000, 0);" in cmd]
   info.script.AppendExtra('package_extract_file("boot.img", "/tmp/boot.img");')
   
-  if re.match('^cm_', str(os.getenv('TARGET_PRODUCT'))):
-    info.script.Unmount("/system")
+  info.script.AppendExtra('ifelse(is_mounted("/system"), unmount("/system"));')
   
   info.script.Mount("/system")
   info.script.AppendExtra('assert(run_program("/system/bin/panel.sh") == 0);')
