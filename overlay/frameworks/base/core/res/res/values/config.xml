@@ -258,18 +258,17 @@
          backlight values for LUX levels between these control points.
          Must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLevels">
-        <item>64</item>
-        <item>128</item>
+        <item>32</item>
+        <item>82</item>
         <item>170</item>
-        <item>220</item>
-        <item>256</item>
-        <item>384</item>
-        <item>512</item>
-        <item>768</item>
-        <item>1024</item>
-        <item>1536</item>
-        <item>2048</item>
-        <item>4096</item>
+        <item>350</item>
+        <item>500</item>
+        <item>700</item>
+        <item>1000</item>
+        <item>1400</item>
+        <item>2400</item>
+        <item>3500</item>
+        <item>9000</item>
     </integer-array>
 
     <!-- Array of output values for LCD backlight corresponding to the LUX values
@@ -278,19 +277,18 @@
          The brightness values must be between 0 and 255 and be non-decreasing.
          This must be overridden in platform specific overlays -->
     <integer-array name="config_autoBrightnessLcdBacklightValues">
-        <item>20</item>   <!--    0 -->
-        <item>32</item>   <!--   64 -->
-        <item>64</item>   <!--  128 -->
-        <item>80</item>   <!--  170 -->
-        <item>96</item>   <!--  220 -->
-        <item>112</item>  <!--  256 -->
-        <item>128</item>  <!--  384 -->
-        <item>144</item>  <!--  512 -->
-        <item>176</item>  <!--  768 -->
-        <item>196</item>  <!-- 1024 -->
-        <item>208</item>  <!-- 1536 -->
-        <item>224</item>  <!-- 2048 -->
-        <item>255</item>  <!-- 4096 -->
+        <item>55</item>
+        <item>105</item>
+        <item>125</item>
+        <item>145</item>
+        <item>170</item>
+        <item>178</item>
+        <item>183</item>
+        <item>195</item>
+        <item>212</item>
+        <item>220</item>
+        <item>235</item>
+        <item>255</item>
     </integer-array>
 
     <!-- Disable lockscreen translucent decor by default -->
