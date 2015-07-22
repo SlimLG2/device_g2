@@ -533,6 +533,9 @@ on property:init.svc.bootanim=stopped
     write /sys/module/lowmemorykiller/parameters/minfree 2560,4096,8192,16384,24576,32768
     write /sys/module/lowmemorykiller/parameters/cost 32
 
+    write /proc/sys/vm/dirty_ratio 40
+    write /proc/sys/vm/swappiness 0
+
     write /sys/devices/system/cpu/sched_mc_power_savings 2
 
     start mpdecision
