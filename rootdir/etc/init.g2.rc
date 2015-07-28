@@ -520,7 +520,7 @@ on property:init.svc.bootanim=stopped
     write /sys/module/cpu_boost/parameters/sync_threshold 1728000
     write /sys/module/cpu_boost/parameters/input_boost_freq 1497600
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor simple_ondemand
     write /dev/cpuctl/apps/cpu.notify_on_migrate 1
 
     write /sys/block/mmcblk0/queue/scheduler zen
@@ -768,7 +768,7 @@ on property:sys.perf.profile=1
     write /sys/devices/system/cpu/cpufreq/interactive/sync_freq 1036800
     write /sys/devices/system/cpu/cpufreq/interactive/up_threshold_any_cpu_freq 1190400
 
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor simple_ondemand
     start mpdecision
 
 on property:sys.perf.profile=2
