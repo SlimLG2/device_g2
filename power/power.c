@@ -270,7 +270,7 @@ void set_interactive(struct power_module *module, int on)
 
     pthread_mutex_lock(&hint_mutex);
 
-    // cm_power_set_interactive_ext(on);
+    cm_power_set_interactive_ext(on);
 
     if (set_interactive_override(module, on) == HINT_HANDLED) {
         goto out;
