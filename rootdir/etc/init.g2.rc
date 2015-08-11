@@ -500,6 +500,14 @@ on property:service.bootanim.exit=1
     chmod 664 /sys/devices/system/cpu/cpu3/online
 
 on property:init.svc.bootanim=stopped
+    # Set light thermal restrictions while optimizing apps
+    # [throttle_freq, throttle_temp, unthrottle_temp]
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/user_maxfreq 0
+    write /sys/kernel/msm_thermal/low_thresh "1728000 62 57"
+    write /sys/kernel/msm_thermal/mid_thresh "1574400 68 61"
+    write /sys/kernel/msm_thermal/high_thresh "1267200 72 69"
+    write /sys/kernel/msm_thermal/enabled 1
     # Switch to ROW and balanced mode after boot for better UX
     write /sys/class/devfreq/qcom,cpubw.40/governor "cpubw_hwmon"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
@@ -729,6 +737,13 @@ on property:init.svc.surfaceflinger=running
 
 # CM Performance Profiles
 on property:sys.perf.profile=0
+    stop mpdecision
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/user_maxfreq 729600
+    write /sys/kernel/msm_thermal/low_thresh "1574400 54 48"
+    write /sys/kernel/msm_thermal/mid_thresh "1267200 60 55"
+    write /sys/kernel/msm_thermal/high_thresh "960000 66 62"
+    write /sys/kernel/msm_thermal/enabled 1
     write /sys/class/devfreq/qcom,cpubw.41/governor "powersave"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor conservative
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor conservative
@@ -738,12 +753,18 @@ on property:sys.perf.profile=0
     start mpdecision
 
 on property:sys.perf.profile=1
+    stop mpdecision
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/user_maxfreq 0
+    write /sys/kernel/msm_thermal/low_thresh "1574400 54 48"
+    write /sys/kernel/msm_thermal/mid_thresh "1267200 60 55"
+    write /sys/kernel/msm_thermal/high_thresh "960000 66 62"
+    write /sys/kernel/msm_thermal/enabled 1
     write /sys/class/devfreq/qcom,cpubw.41/governor "msm_cpufreq"
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu1/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor "interactive"
     write /sys/devices/system/cpu/cpu3/cpufreq/scaling_governor "interactive"
-
     write /sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay "20000 1400000:40000 1700000:20000"
     write /sys/devices/system/cpu/cpufreq/interactive/go_hispeed_load 90
     write /sys/devices/system/cpu/cpufreq/interactive/hispeed_freq 1190400
@@ -762,6 +783,12 @@ on property:sys.perf.profile=1
 
 on property:sys.perf.profile=2
     stop mpdecision
+    write /sys/kernel/msm_thermal/enabled 0
+    write /sys/kernel/msm_thermal/user_maxfreq 0
+    write /sys/kernel/msm_thermal/low_thresh "1574400 54 48"
+    write /sys/kernel/msm_thermal/mid_thresh "1267200 60 55"
+    write /sys/kernel/msm_thermal/high_thresh "960000 66 62"
+    write /sys/kernel/msm_thermal/enabled 1
     write /sys/devices/system/cpu/cpu0/online 1
     write /sys/devices/system/cpu/cpu1/online 1
     write /sys/devices/system/cpu/cpu2/online 1
