@@ -513,7 +513,7 @@ on property:init.svc.bootanim=stopped
     write /sys/module/cpu_boost/parameters/sync_threshold 0
     write /sys/module/cpu_boost/parameters/input_boost_freq 0
     write /sys/module/cpu_boost/parameters/input_boost_ms 40
-    write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
+    write /sys/class/kgsl/kgsl-3d0/devfreq/governor simple_ondemand
     write /dev/cpuctl/cpu.notify_on_migrate 0
 
     write /sys/block/mmcblk0/queue/scheduler row
